@@ -172,3 +172,18 @@
   .match-center { min-width: 130px; }
   .score-input { width: 40px; height: 38px; font-size: 1.3rem; }
 }
+
+.match-card.locked {
+  border-left-color: var(--muted);
+  opacity: 0.85;
+}
+
+.lock-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.countdown {
+  color: var(--gold);
+  font-weight: 600;
+}
