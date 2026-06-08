@@ -130,6 +130,8 @@ export default function App() {
             currentUser={user}
             myPredictions={myPredictions}
             results={results}
+            allPredictions={allPredictions}
+            users={users}
             showToast={showToast}
           />
         )}

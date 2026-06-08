@@ -187,3 +187,13 @@
   color: var(--gold);
   font-weight: 600;
 }
+
+.match-card.clickable { cursor: pointer; }
+.match-card.clickable:hover { border-color: rgba(245,200,66,0.4); }
+
+.tap-hint {
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
