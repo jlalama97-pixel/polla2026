@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { signInWithGoogle, checkUserRegistered, completeRegistration } from '../firebaseHelpers'
+import { useState, useEffect } from 'react'
+import { signInWithGoogle, checkUserRegistered, completeRegistration, logoutUser } from '../firebaseHelpers'
 import './AuthPage.css'
 
 export default function AuthPage() {
@@ -10,24 +10,55 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  // Si hay un pendingUser, verificamos Firestore con reintento
+  // porque a veces Firebase Auth devuelve el usuario antes
+  // de que Firestore esté listo para responder
+  useEffect(() => {
+    if (!pendingUser) return
+    let cancelled = false
+    let attempts = 0
+
+    async function verify() {
+      while (attempts < 5 && !cancelled) {
+        attempts++
+        try {
+          const profile = await checkUserRegistered(pendingUser.uid)
+          if (cancelled) return
+          if (profile) {
+            // Ya tiene perfil — App.jsx lo detectará automáticamente
+            return
+          } else {
+            // No tiene perfil — pedir código y nombre
+            setStep('register')
+            return
+          }
+        } catch {
+          // Firestore aún no responde, esperar 500ms y reintentar
+          await new Promise(r => setTimeout(r, 500))
+        }
+      }
+      if (!cancelled) setStep('register')
+    }
+
+    verify()
+    return () => { cancelled = true }
+  }, [pendingUser])
+
   async function handleGoogleSignIn() {
     setError('')
     setLoading(true)
     try {
       const user = await signInWithGoogle()
-      const profile = await checkUserRegistered(user.uid)
-      if (!profile) {
-        setPendingUser(user)
-        setStep('register')
-      }
+      setPendingUser(user)
+      // El useEffect se encarga de verificar Firestore
     } catch (err) {
       if (err.code === 'auth/popup-closed-by-user') {
         setError('Cerraste la ventana de Google. Inténtalo de nuevo.')
       } else {
         setError('Error al iniciar sesión con Google. Inténtalo de nuevo.')
       }
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   async function handleCompleteRegistration(e) {
@@ -36,10 +67,37 @@ export default function AuthPage() {
     setLoading(true)
     try {
       await completeRegistration(pendingUser.uid, inviteCode.trim(), username.trim())
+      // App.jsx detectará el cambio automáticamente
     } catch (err) {
       setError(err.message)
+      setLoading(false)
     }
+  }
+
+  async function handleCancelRegister() {
+    await logoutUser()
+    setPendingUser(null)
+    setStep('login')
+    setInviteCode('')
+    setUsername('')
+    setError('')
     setLoading(false)
+  }
+
+  // Pantalla de carga mientras verificamos Firestore
+  if (pendingUser && step === 'login') {
+    return (
+      <div className="auth-bg">
+        <div className="auth-glow" />
+        <div className="auth-card" style={{ textAlign: 'center' }}>
+          <div className="auth-logo">
+            <h1>POLLA 2026</h1>
+          </div>
+          <div className="spinner" style={{ width: 32, height: 32, margin: '1rem auto' }} />
+          <p style={{ color: 'var(--text2)', fontSize: 14 }}>Verificando tu cuenta...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -58,14 +116,8 @@ export default function AuthPage() {
             <p className="login-desc">
               Entra con tu cuenta de Google para participar en la polla mundialista con tus amigos.
             </p>
-            <button
-              className="btn-google"
-              onClick={handleGoogleSignIn}
-              disabled={loading}
-            >
-              {loading ? (
-                <span className="spinner" />
-              ) : (
+            <button className="btn-google" onClick={handleGoogleSignIn} disabled={loading}>
+              {loading ? <span className="spinner" /> : (
                 <>
                   <svg width="20" height="20" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -77,9 +129,7 @@ export default function AuthPage() {
                 </>
               )}
             </button>
-            <p className="login-note">
-              Solo pueden entrar quienes tengan el código de invitación.
-            </p>
+            <p className="login-note">Solo pueden entrar quienes tengan el código de invitación.</p>
           </div>
         )}
 
@@ -114,6 +164,14 @@ export default function AuthPage() {
             </div>
             <button className="btn btn-primary btn-full" type="submit" disabled={loading}>
               {loading ? <span className="spinner" /> : 'Unirse a la Polla 🏆'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-ghost btn-full"
+              style={{ marginTop: 8 }}
+              onClick={handleCancelRegister}
+            >
+              Cancelar
             </button>
           </form>
         )}
