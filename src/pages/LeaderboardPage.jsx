@@ -9,14 +9,14 @@ export default function LeaderboardPage({ users, allPredictions, results, curren
       let total = 0, exact = 0, partial = 0, predicted = 0
 
       ALL_MATCHES.forEach(m => {
-        const result = results[m.id]
         const pred = preds[m.id]
+        const result = results[m.id]
+        if (pred) predicted++ // todos los pronósticos guardados
         if (result && pred) {
           const pts = calcPoints(pred, result, m.knockout)
           total += pts
           if (pts === maxPoints(m.knockout)) exact++
           else if (pts > 0) partial++
-          predicted++
         }
       })
 
@@ -29,7 +29,6 @@ export default function LeaderboardPage({ users, allPredictions, results, curren
 
   return (
     <div className="lb-page">
-      {/* My stats summary */}
       {myStats && (
         <div className="my-stats-grid">
           {[
@@ -46,7 +45,6 @@ export default function LeaderboardPage({ users, allPredictions, results, curren
         </div>
       )}
 
-      {/* Leaderboard table */}
       <div className="lb-table">
         <div className="lb-header">
           <span>#</span>
