@@ -4,6 +4,16 @@ import { savePrediction } from '../firebaseHelpers'
 import MatchDetail from './MatchDetail'
 import './MatchesPage.css'
 
+function makeCalendarUrl(match) {
+  const start = new Date(match.kickoffUTC)
+  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000)
+  const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+  const title = encodeURIComponent(`⚽ ${match.home.name} vs ${match.away.name} - Mundial 2026`)
+  const details = encodeURIComponent(`Polla Mundialista 2026 · Grupo ${match.group}`)
+  const dates = `${fmt(start)}/${fmt(end)}`
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}`
+}
+
 export default function MatchesPage({ currentUser, myPredictions, results, allPredictions, users, showToast }) {
   const [filter, setFilter] = useState('all')
   const [inputs, setInputs] = useState({})
@@ -76,6 +86,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
           ? Math.floor((new Date(match.kickoffUTC).getTime() - now) / 60000) : null
         const showCountdown = !isFinished && !locked && minsLeft !== null && minsLeft <= 60 && minsLeft > 0
         const clickable = locked || isFinished
+        const showCalendar = !isFinished && match.kickoffUTC
 
         return (
           <div key={match.id}>
@@ -135,6 +146,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                           value={getInput(match.id, 'home')}
                           onChange={e => setInput(match.id, 'home', e.target.value)}
                           placeholder="0"
+                          onClick={e => e.stopPropagation()}
                         />
                         <span className="score-sep">–</span>
                         <input
@@ -143,15 +155,30 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                           value={getInput(match.id, 'away')}
                           onChange={e => setInput(match.id, 'away', e.target.value)}
                           placeholder="0"
+                          onClick={e => e.stopPropagation()}
                         />
                       </div>
-                      <button
-                        className="btn btn-primary btn-sm save-btn"
-                        onClick={() => handleSave(match)}
-                        disabled={saving[match.id]}
-                      >
-                        {saving[match.id] ? <span className="spinner" /> : 'Guardar'}
-                      </button>
+                      <div className="match-actions">
+                        <button
+                          className="btn btn-primary btn-sm save-btn"
+                          onClick={e => { e.stopPropagation(); handleSave(match) }}
+                          disabled={saving[match.id]}
+                        >
+                          {saving[match.id] ? <span className="spinner" /> : 'Guardar'}
+                        </button>
+                        {showCalendar && (
+                          <a
+                            className="btn-calendar"
+                            href={makeCalendarUrl(match)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            title="Añadir a Google Calendar"
+                          >
+                            📅
+                          </a>
+                        )}
+                      </div>
                     </>
                   )}
                 </div>
