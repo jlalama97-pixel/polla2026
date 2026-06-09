@@ -10,6 +10,7 @@ import CompleteProfile from './pages/CompleteProfile'
 import LeaderboardPage from './pages/LeaderboardPage'
 import MatchesPage from './pages/MatchesPage'
 import RulesPage from './pages/RulesPage'
+import StatsPage from './pages/StatsPage'
 import AdminPage from './pages/AdminPage'
 import './App.css'
 
@@ -17,6 +18,7 @@ const TABS = [
   { id: 'leaderboard', label: '🏆 Tabla' },
   { id: 'matches', label: '⚽ Partidos' },
   { id: 'rules', label: '📋 Reglas' },
+  { id: 'stats', label: '📊 Stats' },
 ]
 
 export default function App() {
@@ -145,7 +147,8 @@ export default function App() {
             showToast={showToast}
           />
         )}
-        {activeTab === 'rules' && <RulesPage />}
+        {activeTab === 'rules' && <RulesPage /> }
+        {activeTab === 'stats' && <StatsPage users={users} allPredictions={allPredictions} results={results} />}
         {activeTab === 'admin' && isAdmin && (
           <AdminPage users={users} allPredictions={allPredictions} results={results} showToast={showToast} />
         )}

@@ -18,7 +18,7 @@ export default function RulesPage() {
   return (
     <div className="rules-page">
       <div className="rules-intro">
-        El sistema de puntuación es estilo GolPredictor. Los partidos eliminatorios valen el doble que los de grupos.
+        El sistema de puntuación es en base al resultado y a los goles. Los partidos eliminatorios valen el doble que los de grupos.
       </div>
 
       <div className="pts-grid">
@@ -70,7 +70,7 @@ export default function RulesPage() {
         <ul>
           <li>⏱️ Los pronósticos <strong>cierran 10 min antes</strong> del inicio de cada partido</li>
           <li>⚽ Solo cuentan los <strong>90 minutos reglamentarios</strong> más tiempo de descuento (NO penales ni prórroga)</li>
-          <li>🔄 Los resultados se <strong>actualizan automáticamente</strong> desde una API de fútbol</li>
+          <li>🔄 Los resultados se <strong>actualizan automáticamente</strong> desde una API</li>
           <li>🏅 En caso de empate en la tabla: gana quien tenga <strong>más pronósticos perfectos</strong></li>
         </ul>
       </div>

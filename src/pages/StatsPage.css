@@ -1,0 +1,107 @@
+.stats-page { padding: 1rem; max-width: 700px; margin: 0 auto; }
+
+.stats-header {
+  font-size: 13px;
+  color: var(--text3);
+  margin-bottom: 1.25rem;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+}
+.stats-header strong { color: var(--gold); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-card-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.stat-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.stat-row:last-child { border-bottom: none; }
+
+.stat-pos {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.stat-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.stat-empty {
+  font-size: 13px;
+  color: var(--text3);
+  font-style: italic;
+  padding: 8px 0;
+}
+
+/* Empty state */
+.stats-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.stats-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+.stats-empty h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.stats-empty p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.stats-date { margin-top: 1rem !important; }
+.stats-date strong { color: var(--gold); }
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
