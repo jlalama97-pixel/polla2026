@@ -145,6 +145,9 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                     <>
                       <div className="lock-icon">🔒</div>
                       <div className="match-datetime">{formatKickoff(match.kickoffUTC)}</div>
+                      {match.city && (
+                        <div className="match-venue">📍 {match.stadium}, {match.city}</div>
+                      )}
                       {pred
                         ? <div className="my-pred-label">Tu pronóstico: <strong>{pred.home}–{pred.away}</strong></div>
                         : <div className="no-pred-label">Sin pronóstico</div>
@@ -157,6 +160,9 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                         {formatKickoff(match.kickoffUTC)}
                         {showCountdown && <span className="countdown"> · ⏱ {minsLeft} min</span>}
                       </div>
+                      {match.city && (
+                        <div className="match-venue">📍 {match.stadium}, {match.city}</div>
+                      )}
                       <div className="pred-row">
                         <input
                           className="score-input"
