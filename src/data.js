@@ -14,6 +14,15 @@ export function isMatchLocked(kickoffUTC) {
   return now >= kickoff - 10 * 60 * 1000 // 10 minutos antes
 }
 
+export function isToday(kickoffUTC) {
+  if (!kickoffUTC) return false
+  const now = new Date()
+  const match = new Date(kickoffUTC)
+  return now.getFullYear() === match.getFullYear()
+    && now.getMonth() === match.getMonth()
+    && now.getDate() === match.getDate()
+}
+
 export function formatKickoff(kickoffUTC) {
   if (!kickoffUTC) return ''
   return new Date(kickoffUTC).toLocaleString('es', {
@@ -265,7 +274,7 @@ export const PHASE_LABELS = {
   quarter: 'Cuartos de Final',
   semi:    'Semifinales',
   third:   'Tercer Lugar',
-  final:   '⭐ Final',
+  final:   '⭐ Gran Final',
 }
 
 export const GROUP_FILTERS = ['all','A','B','C','D','E','F','G','H','I','J','K','L','R32','R16','QF','SF','FINAL']

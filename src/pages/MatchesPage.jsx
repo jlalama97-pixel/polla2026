@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { ALL_MATCHES, PHASE_LABELS, GROUP_FILTERS, GROUP_FILTER_LABELS, calcPoints, maxPoints, isMatchLocked, formatKickoff } from '../data'
+import { ALL_MATCHES, PHASE_LABELS, GROUP_FILTERS, GROUP_FILTER_LABELS, calcPoints, maxPoints, isMatchLocked, formatKickoff, isToday } from '../data'
 import { savePrediction } from '../firebaseHelpers'
 import MatchPredictions from './MatchPredictions'
 import './MatchesPage.css'
@@ -98,6 +98,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
         const clickable = locked || isFinished
         const showCalendar = !isFinished && !locked && match.kickoffUTC
         const isExpanded = expandedMatch === match.id
+        const playsToday = !isFinished && isToday(match.kickoffUTC)
 
         return (
           <div key={match.id}>
@@ -114,6 +115,9 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
               )}
               {filter === 'all' && !match.knockout && (
                 <div className="group-tag">Grupo {match.group}</div>
+              )}
+              {playsToday && (
+                <div className="today-badge">🔴 HOY</div>
               )}
 
               <div className="match-grid">
