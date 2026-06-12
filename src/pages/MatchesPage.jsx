@@ -1,7 +1,7 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react'
 import { ALL_MATCHES, PHASE_LABELS, GROUP_FILTERS, GROUP_FILTER_LABELS, calcPoints, maxPoints, isMatchLocked, formatKickoff } from '../data'
 import { savePrediction } from '../firebaseHelpers'
-import MatchDetail from './MatchDetail'
+import MatchPredictions from './MatchPredictions'
 import './MatchesPage.css'
 
 function makeCalendarUrl(match) {
@@ -19,7 +19,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
   const [inputs, setInputs] = useState({})
   const [saving, setSaving] = useState({})
   const [now, setNow] = useState(Date.now())
-  const [selectedMatch, setSelectedMatch] = useState(null)
+  const [expandedMatch, setExpandedMatch] = useState(null)
 
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 30000)
@@ -57,7 +57,17 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
     setSaving(prev => ({ ...prev, [match.id]: false }))
   }, [inputs, myPredictions, currentUser, showToast])
 
-  const filtered = ALL_MATCHES.filter(m => filter === 'all' || m.group === filter)
+  // Lista filtrada y ordenada
+  const filtered = useMemo(() => {
+    const list = ALL_MATCHES.filter(m => filter === 'all' || m.group === filter)
+    if (filter === 'all') {
+      // Orden cronológico cuando se ven todos
+      return [...list].sort((a, b) => new Date(a.kickoffUTC) - new Date(b.kickoffUTC))
+    }
+    return list
+  }, [filter])
+
+  const showPhaseHeaders = filter !== 'all'
   let currentPhase = ''
 
   return (
@@ -71,7 +81,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
       </div>
 
       {filtered.map(match => {
-        const phaseHeader = match.phase !== currentPhase
+        const phaseHeader = showPhaseHeaders && match.phase !== currentPhase
           ? (currentPhase = match.phase, PHASE_LABELS[match.phase]) : null
 
         const result = results[match.id]
@@ -86,20 +96,24 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
           ? Math.floor((new Date(match.kickoffUTC).getTime() - now) / 60000) : null
         const showCountdown = !isFinished && !locked && minsLeft !== null && minsLeft <= 60 && minsLeft > 0
         const clickable = locked || isFinished
-        const showCalendar = !isFinished && match.kickoffUTC
+        const showCalendar = !isFinished && !locked && match.kickoffUTC
+        const isExpanded = expandedMatch === match.id
 
         return (
           <div key={match.id}>
             {phaseHeader && <div className="phase-header">{phaseHeader}</div>}
 
             <div
-              className={`match-card ${hasPred && !isFinished ? 'has-pred' : ''} ${isFinished ? 'finished' : ''} ${locked && !isFinished ? 'locked' : ''} ${clickable ? 'clickable' : ''}`}
-              onClick={clickable ? () => setSelectedMatch(match) : undefined}
+              className={`match-card ${hasPred && !isFinished ? 'has-pred' : ''} ${isFinished ? 'finished' : ''} ${locked && !isFinished ? 'locked' : ''} ${clickable ? 'clickable' : ''} ${isExpanded ? 'expanded' : ''}`}
+              onClick={clickable ? () => setExpandedMatch(isExpanded ? null : match.id) : undefined}
             >
               {match.knockout && (
                 <div className="knockout-label">
                   <span className="badge badge-gold">{match.group === 'FINAL' ? '⭐ FINAL' : match.group}</span>
                 </div>
+              )}
+              {filter === 'all' && !match.knockout && (
+                <div className="group-tag">Grupo {match.group}</div>
               )}
 
               <div className="match-grid">
@@ -121,7 +135,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                         ? <div className="my-pred-label">Tu pronóstico: <strong>{pred.home}–{pred.away}</strong></div>
                         : <div className="no-pred-label">Sin pronóstico</div>
                       }
-                      <div className="tap-hint">Toca para ver todos los pronósticos</div>
+                      <div className="tap-hint">{isExpanded ? '▲ Ocultar' : '▼ Ver todos los pronósticos'}</div>
                     </>
                   ) : locked ? (
                     <>
@@ -131,7 +145,7 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                         ? <div className="my-pred-label">Tu pronóstico: <strong>{pred.home}–{pred.away}</strong></div>
                         : <div className="no-pred-label">Sin pronóstico</div>
                       }
-                      <div className="tap-hint">Toca para ver los pronósticos</div>
+                      <div className="tap-hint">{isExpanded ? '▲ Ocultar' : '▼ Ver pronósticos'}</div>
                     </>
                   ) : (
                     <>
@@ -188,22 +202,23 @@ export default function MatchesPage({ currentUser, myPredictions, results, allPr
                   <span className="team-name">{match.away.name}</span>
                 </div>
               </div>
+
+              {/* Acordeón con pronósticos de todos */}
+              {isExpanded && (
+                <div onClick={e => e.stopPropagation()}>
+                  <MatchPredictions
+                    match={match}
+                    result={result}
+                    allPredictions={allPredictions}
+                    users={users}
+                  />
+                </div>
+              )}
             </div>
           </div>
         )
       })}
-
       <div style={{ height: '2rem' }} />
-
-      {selectedMatch && (
-        <MatchDetail
-          match={selectedMatch}
-          result={results[selectedMatch.id]}
-          allPredictions={allPredictions}
-          users={users}
-          onClose={() => setSelectedMatch(null)}
-        />
-      )}
     </div>
   )
 }
