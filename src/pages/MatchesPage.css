@@ -257,3 +257,11 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
+
+.match-venue {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
