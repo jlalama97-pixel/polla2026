@@ -12,6 +12,8 @@ import {
   collection,
   onSnapshot,
   serverTimestamp,
+  query,
+  where,
 } from 'firebase/firestore'
 import { auth, db } from './firebase'
 import { INVITE_CODE, ADMIN_USERS } from './data'
@@ -79,13 +81,13 @@ export async function savePrediction(uid, matchId, home, away) {
 }
 
 export async function getUserPredictions(uid) {
-  const snap = await getDocs(collection(db, 'predictions'))
+  const snap = await getDocs(
+    query(collection(db, 'predictions'), where('uid', '==', uid))
+  )
   const preds = {}
   snap.forEach(d => {
     const data = d.data()
-    if (data.uid === uid) {
-      preds[data.matchId] = { home: data.home, away: data.away }
-    }
+    preds[data.matchId] = { home: data.home, away: data.away }
   })
   return preds
 }
