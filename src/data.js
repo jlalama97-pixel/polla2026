@@ -214,45 +214,135 @@ function genGroupMatches() {
   }))
 }
 
+// ─────────────────────────────────────────────────────
+// PARTIDOS ELIMINATORIOS - MUNDIAL 2026
+// Horarios en UTC (Madrid CEST = UTC+2, restamos 2h)
+// IDs r32_1 … r32_16 preservados para no invalidar pronósticos
+// ─────────────────────────────────────────────────────
+
 export const KNOCKOUT_MATCHES = [
-  // Ronda de 32
-  { id: 'r32_1',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo A', flag: '🔵' }, away: { name: '2° Grupo B', flag: '🔴' }, kickoffUTC: '2026-06-28T20:00:00Z' },
-  { id: 'r32_2',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo C', flag: '🔵' }, away: { name: '2° Grupo D', flag: '🔴' }, kickoffUTC: '2026-06-29T00:00:00Z' },
-  { id: 'r32_3',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo E', flag: '🔵' }, away: { name: '2° Grupo F', flag: '🔴' }, kickoffUTC: '2026-06-29T20:00:00Z' },
-  { id: 'r32_4',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo G', flag: '🔵' }, away: { name: '2° Grupo H', flag: '🔴' }, kickoffUTC: '2026-06-30T00:00:00Z' },
-  { id: 'r32_5',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo I', flag: '🔵' }, away: { name: '2° Grupo J', flag: '🔴' }, kickoffUTC: '2026-06-30T20:00:00Z' },
-  { id: 'r32_6',  group: 'R32', phase: 'round32', knockout: true, home: { name: '1° Grupo K', flag: '🔵' }, away: { name: '2° Grupo L', flag: '🔴' }, kickoffUTC: '2026-07-01T00:00:00Z' },
-  { id: 'r32_7',  group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo A', flag: '🔵' }, away: { name: '1° Grupo B', flag: '🔴' }, kickoffUTC: '2026-07-01T20:00:00Z' },
-  { id: 'r32_8',  group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo C', flag: '🔵' }, away: { name: '1° Grupo D', flag: '🔴' }, kickoffUTC: '2026-07-02T00:00:00Z' },
-  { id: 'r32_9',  group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo E', flag: '🔵' }, away: { name: '1° Grupo F', flag: '🔴' }, kickoffUTC: '2026-07-02T20:00:00Z' },
-  { id: 'r32_10', group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo G', flag: '🔵' }, away: { name: '1° Grupo H', flag: '🔴' }, kickoffUTC: '2026-07-03T00:00:00Z' },
-  { id: 'r32_11', group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo I', flag: '🔵' }, away: { name: '1° Grupo J', flag: '🔴' }, kickoffUTC: '2026-07-03T20:00:00Z' },
-  { id: 'r32_12', group: 'R32', phase: 'round32', knockout: true, home: { name: '2° Grupo K', flag: '🔵' }, away: { name: '1° Grupo L', flag: '🔴' }, kickoffUTC: '2026-07-04T00:00:00Z' },
-  { id: 'r32_13', group: 'R32', phase: 'round32', knockout: true, home: { name: '3° mejor 1', flag: '🟡' }, away: { name: '3° mejor 2', flag: '🟡' }, kickoffUTC: '2026-07-04T20:00:00Z' },
-  { id: 'r32_14', group: 'R32', phase: 'round32', knockout: true, home: { name: '3° mejor 3', flag: '🟡' }, away: { name: '3° mejor 4', flag: '🟡' }, kickoffUTC: '2026-07-05T00:00:00Z' },
-  { id: 'r32_15', group: 'R32', phase: 'round32', knockout: true, home: { name: '3° mejor 5', flag: '🟡' }, away: { name: '3° mejor 6', flag: '🟡' }, kickoffUTC: '2026-07-05T20:00:00Z' },
-  { id: 'r32_16', group: 'R32', phase: 'round32', knockout: true, home: { name: '3° mejor 7', flag: '🟡' }, away: { name: '3° mejor 8', flag: '🟡' }, kickoffUTC: '2026-07-06T00:00:00Z' },
-  // Octavos
-  { id: 'r16_1', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G1 R32', flag: '🔵' }, away: { name: 'G2 R32',  flag: '🔴' }, kickoffUTC: '2026-07-07T20:00:00Z' },
-  { id: 'r16_2', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G3 R32', flag: '🔵' }, away: { name: 'G4 R32',  flag: '🔴' }, kickoffUTC: '2026-07-08T00:00:00Z' },
-  { id: 'r16_3', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G5 R32', flag: '🔵' }, away: { name: 'G6 R32',  flag: '🔴' }, kickoffUTC: '2026-07-08T20:00:00Z' },
-  { id: 'r16_4', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G7 R32', flag: '🔵' }, away: { name: 'G8 R32',  flag: '🔴' }, kickoffUTC: '2026-07-09T00:00:00Z' },
-  { id: 'r16_5', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G9 R32', flag: '🔵' }, away: { name: 'G10 R32', flag: '🔴' }, kickoffUTC: '2026-07-09T20:00:00Z' },
-  { id: 'r16_6', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G11 R32',flag: '🔵' }, away: { name: 'G12 R32', flag: '🔴' }, kickoffUTC: '2026-07-10T00:00:00Z' },
-  { id: 'r16_7', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G13 R32',flag: '🔵' }, away: { name: 'G14 R32', flag: '🔴' }, kickoffUTC: '2026-07-10T20:00:00Z' },
-  { id: 'r16_8', group: 'R16', phase: 'round16', knockout: true, home: { name: 'G15 R32',flag: '🔵' }, away: { name: 'G16 R32', flag: '🔴' }, kickoffUTC: '2026-07-11T00:00:00Z' },
-  // Cuartos
-  { id: 'qf_1', group: 'QF', phase: 'quarter', knockout: true, home: { name: 'G1 R16', flag: '🔵' }, away: { name: 'G2 R16', flag: '🔴' }, kickoffUTC: '2026-07-12T20:00:00Z' },
-  { id: 'qf_2', group: 'QF', phase: 'quarter', knockout: true, home: { name: 'G3 R16', flag: '🔵' }, away: { name: 'G4 R16', flag: '🔴' }, kickoffUTC: '2026-07-13T00:00:00Z' },
-  { id: 'qf_3', group: 'QF', phase: 'quarter', knockout: true, home: { name: 'G5 R16', flag: '🔵' }, away: { name: 'G6 R16', flag: '🔴' }, kickoffUTC: '2026-07-13T20:00:00Z' },
-  { id: 'qf_4', group: 'QF', phase: 'quarter', knockout: true, home: { name: 'G7 R16', flag: '🔵' }, away: { name: 'G8 R16', flag: '🔴' }, kickoffUTC: '2026-07-14T00:00:00Z' },
-  // Semis
-  { id: 'sf_1', group: 'SF', phase: 'semi', knockout: true, home: { name: 'G1 QF', flag: '🔵' }, away: { name: 'G2 QF', flag: '🔴' }, kickoffUTC: '2026-07-15T23:00:00Z' },
-  { id: 'sf_2', group: 'SF', phase: 'semi', knockout: true, home: { name: 'G3 QF', flag: '🔵' }, away: { name: 'G4 QF', flag: '🔴' }, kickoffUTC: '2026-07-16T23:00:00Z' },
-  // Tercer lugar
-  { id: 'tp_1', group: '3P', phase: 'third', knockout: true, home: { name: 'Perdedor SF-1', flag: '🔵' }, away: { name: 'Perdedor SF-2', flag: '🔴' }, kickoffUTC: '2026-07-19T19:00:00Z' },
-  // Final
-  { id: 'final', group: 'FINAL', phase: 'final', knockout: true, home: { name: 'Ganador SF-1', flag: '🏆' }, away: { name: 'Ganador SF-2', flag: '🏆' }, kickoffUTC: '2026-07-19T23:00:00Z' },
+  // ── RONDA DE 32 (Resultados reales del sorteo) ────
+  { id: 'r32_1',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Sudáfrica', flag: '🇿🇦' }, away: { name: 'Canadá', flag: '🇨🇦' },
+    kickoffUTC: '2026-06-28T19:00:00Z', city: 'Inglewood', stadium: 'SoFi Stadium' },
+
+  { id: 'r32_2',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Brasil', flag: '🇧🇷' }, away: { name: 'Japón', flag: '🇯🇵' },
+    kickoffUTC: '2026-06-29T17:00:00Z', city: 'Houston', stadium: 'NRG Stadium' },
+
+  { id: 'r32_3',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Alemania', flag: '🇩🇪' }, away: { name: 'Paraguay', flag: '🇵🇾' },
+    kickoffUTC: '2026-06-29T20:30:00Z', city: 'Foxborough', stadium: 'Gillette Stadium' },
+
+  { id: 'r32_4',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'C. de Marfil', flag: '🇨🇮' }, away: { name: 'Noruega', flag: '🇳🇴' },
+    kickoffUTC: '2026-06-30T17:00:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+
+  { id: 'r32_5',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Francia', flag: '🇫🇷' }, away: { name: 'Suecia', flag: '🇸🇪' },
+    kickoffUTC: '2026-06-30T21:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
+
+  { id: 'r32_6',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Países Bajos', flag: '🇳🇱' }, away: { name: 'Marruecos', flag: '🇲🇦' },
+    kickoffUTC: '2026-07-01T01:00:00Z', city: 'Monterrey', stadium: 'Estadio BBVA' },
+
+  { id: 'r32_7',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'México', flag: '🇲🇽' }, away: { name: 'Ecuador', flag: '🇪🇨' },
+    kickoffUTC: '2026-07-01T01:00:00Z', city: 'Ciudad de México', stadium: 'Estadio Azteca' },
+
+  { id: 'r32_8',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, away: { name: 'Congo DR', flag: '🇨🇩' },
+    kickoffUTC: '2026-07-01T16:00:00Z', city: 'Atlanta', stadium: 'Mercedes-Benz Stadium' },
+
+  { id: 'r32_9',  group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Bélgica', flag: '🇧🇪' }, away: { name: 'Senegal', flag: '🇸🇳' },
+    kickoffUTC: '2026-07-01T20:00:00Z', city: 'Seattle', stadium: 'Lumen Field' },
+
+  { id: 'r32_10', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Estados Unidos', flag: '🇺🇸' }, away: { name: 'Bosnia', flag: '🇧🇦' },
+    kickoffUTC: '2026-07-02T00:00:00Z', city: 'Santa Clara', stadium: "Levi's Stadium" },
+
+  { id: 'r32_11', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'España', flag: '🇪🇸' }, away: { name: 'Austria', flag: '🇦🇹' },
+    kickoffUTC: '2026-07-02T19:00:00Z', city: 'Inglewood', stadium: 'SoFi Stadium' },
+
+  { id: 'r32_12', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Portugal', flag: '🇵🇹' }, away: { name: 'Croacia', flag: '🇭🇷' },
+    kickoffUTC: '2026-07-02T23:00:00Z', city: 'Toronto', stadium: 'BMO Field' },
+
+  { id: 'r32_13', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Suiza', flag: '🇨🇭' }, away: { name: 'Argelia', flag: '🇩🇿' },
+    kickoffUTC: '2026-07-03T03:00:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+
+  { id: 'r32_14', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Australia', flag: '🇦🇺' }, away: { name: 'Egipto', flag: '🇪🇬' },
+    kickoffUTC: '2026-07-03T18:00:00Z', city: 'Kansas City', stadium: 'Arrowhead Stadium' },
+
+  { id: 'r32_15', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Argentina', flag: '🇦🇷' }, away: { name: 'Cabo Verde', flag: '🇨🇻' },
+    kickoffUTC: '2026-07-03T22:00:00Z', city: 'Miami Gardens', stadium: 'Hard Rock Stadium' },
+
+  { id: 'r32_16', group: 'R32', phase: 'round32', knockout: true,
+    home: { name: 'Colombia', flag: '🇨🇴' }, away: { name: 'Ghana', flag: '🇬🇭' },
+    kickoffUTC: '2026-07-04T01:30:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+
+  // ── OCTAVOS DE FINAL ─────────────────────────────
+  { id: 'r16_1', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G1 R32', flag: '🔵' }, away: { name: 'G2 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-07T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_2', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G3 R32', flag: '🔵' }, away: { name: 'G4 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-08T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_3', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G5 R32', flag: '🔵' }, away: { name: 'G6 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-08T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_4', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G7 R32', flag: '🔵' }, away: { name: 'G8 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-09T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_5', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G9 R32', flag: '🔵' }, away: { name: 'G10 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-09T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_6', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G11 R32', flag: '🔵' }, away: { name: 'G12 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-10T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_7', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G13 R32', flag: '🔵' }, away: { name: 'G14 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-10T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'r16_8', group: 'R16', phase: 'round16', knockout: true,
+    home: { name: 'G15 R32', flag: '🔵' }, away: { name: 'G16 R32', flag: '🔴' },
+    kickoffUTC: '2026-07-11T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+
+  // ── CUARTOS ──────────────────────────────────────
+  { id: 'qf_1', group: 'QF', phase: 'quarter', knockout: true,
+    home: { name: 'G1 R16', flag: '🔵' }, away: { name: 'G2 R16', flag: '🔴' },
+    kickoffUTC: '2026-07-12T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'qf_2', group: 'QF', phase: 'quarter', knockout: true,
+    home: { name: 'G3 R16', flag: '🔵' }, away: { name: 'G4 R16', flag: '🔴' },
+    kickoffUTC: '2026-07-13T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'qf_3', group: 'QF', phase: 'quarter', knockout: true,
+    home: { name: 'G5 R16', flag: '🔵' }, away: { name: 'G6 R16', flag: '🔴' },
+    kickoffUTC: '2026-07-13T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'qf_4', group: 'QF', phase: 'quarter', knockout: true,
+    home: { name: 'G7 R16', flag: '🔵' }, away: { name: 'G8 R16', flag: '🔴' },
+    kickoffUTC: '2026-07-14T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+
+  // ── SEMIS ─────────────────────────────────────────
+  { id: 'sf_1', group: 'SF', phase: 'semi', knockout: true,
+    home: { name: 'G1 QF', flag: '🔵' }, away: { name: 'G2 QF', flag: '🔴' },
+    kickoffUTC: '2026-07-15T23:00:00Z', city: 'TBD', stadium: 'TBD' },
+  { id: 'sf_2', group: 'SF', phase: 'semi', knockout: true,
+    home: { name: 'G3 QF', flag: '🔵' }, away: { name: 'G4 QF', flag: '🔴' },
+    kickoffUTC: '2026-07-16T23:00:00Z', city: 'TBD', stadium: 'TBD' },
+
+  // ── TERCER LUGAR ──────────────────────────────────
+  { id: 'tp_1', group: '3P', phase: 'third', knockout: true,
+    home: { name: 'Perdedor SF-1', flag: '🔵' }, away: { name: 'Perdedor SF-2', flag: '🔴' },
+    kickoffUTC: '2026-07-19T19:00:00Z', city: 'TBD', stadium: 'TBD' },
+
+  // ── FINAL ─────────────────────────────────────────
+  { id: 'final', group: 'FINAL', phase: 'final', knockout: true,
+    home: { name: 'Ganador SF-1', flag: '🏆' }, away: { name: 'Ganador SF-2', flag: '🏆' },
+    kickoffUTC: '2026-07-19T23:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
 ]
 
 export const ALL_MATCHES = [...genGroupMatches(), ...KNOCKOUT_MATCHES]
