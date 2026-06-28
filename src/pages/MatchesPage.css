@@ -265,3 +265,63 @@
   letter-spacing: 0.3px;
   margin-top: 2px;
 }
+
+/* ── PHASE ACCORDION ──────────────────────────────── */
+.phase-section {
+  margin-bottom: 8px;
+}
+
+.phase-accordion-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.phase-accordion-btn:hover {
+  border-color: rgba(245,200,66,0.3);
+  background: var(--surface2);
+}
+
+.phase-accordion-btn.all-done {
+  opacity: 0.7;
+}
+
+.phase-accordion-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.phase-accordion-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.phase-chevron {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.phase-matches {
+  animation: phase-open 0.2s ease-out;
+}
+
+@keyframes phase-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
