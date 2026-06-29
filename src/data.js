@@ -244,7 +244,7 @@ export const KNOCKOUT_MATCHES = [
 
   { id: 'r32_6',  group: 'R32', phase: 'round32', knockout: true,
     home: { name: 'Países Bajos', flag: '🇳🇱' }, away: { name: 'Marruecos', flag: '🇲🇦' },
-    kickoffUTC: '2026-07-01T01:00:00Z', city: 'Monterrey', stadium: 'Estadio BBVA' },
+    kickoffUTC: '2026-06-30T01:00:00Z', city: 'Monterrey', stadium: 'Estadio BBVA' },
 
   { id: 'r32_7',  group: 'R32', phase: 'round32', knockout: true,
     home: { name: 'México', flag: '🇲🇽' }, away: { name: 'Ecuador', flag: '🇪🇨' },
