@@ -11,7 +11,8 @@ export function isMatchLocked(kickoffUTC) {
   if (!kickoffUTC) return false
   const now = Date.now()
   const kickoff = new Date(kickoffUTC).getTime()
-  return now >= kickoff - 10 * 60 * 1000 // 10 minutos antes
+  //return now >= kickoff - 10 * 60 * 1000 // 10 minutos antes
+  return now >= kickoff // exactamente al inicio del partido
 }
 
 export function isToday(kickoffUTC) {
