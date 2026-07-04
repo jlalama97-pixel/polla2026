@@ -288,29 +288,36 @@ export const KNOCKOUT_MATCHES = [
 
   // ── OCTAVOS DE FINAL ─────────────────────────────
   { id: 'r16_1', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G1 R32', flag: '🔵' }, away: { name: 'G2 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-07T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Canadá', flag: '🇨🇦' }, away: { name: 'Marruecos', flag: '🇲🇦' },
+    kickoffUTC: '2026-07-04T17:00:00Z', city: 'Houston', stadium: 'NRG Stadium' },
+ 
   { id: 'r16_2', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G3 R32', flag: '🔵' }, away: { name: 'G4 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-08T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Paraguay', flag: '🇵🇾' }, away: { name: 'Francia', flag: '🇫🇷' },
+    kickoffUTC: '2026-07-04T21:00:00Z', city: 'Filadelfia', stadium: 'Lincoln Financial Field' },
+ 
   { id: 'r16_3', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G5 R32', flag: '🔵' }, away: { name: 'G6 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-08T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Brasil', flag: '🇧🇷' }, away: { name: 'Noruega', flag: '🇳🇴' },
+    kickoffUTC: '2026-07-05T20:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
+ 
   { id: 'r16_4', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G7 R32', flag: '🔵' }, away: { name: 'G8 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-09T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'México', flag: '🇲🇽' }, away: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+    kickoffUTC: '2026-07-06T00:00:00Z', city: 'Ciudad de México', stadium: 'Estadio Azteca' },
+ 
   { id: 'r16_5', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G9 R32', flag: '🔵' }, away: { name: 'G10 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-09T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Portugal', flag: '🇵🇹' }, away: { name: 'España', flag: '🇪🇸' },
+    kickoffUTC: '2026-07-06T19:00:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+ 
   { id: 'r16_6', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G11 R32', flag: '🔵' }, away: { name: 'G12 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-10T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Estados Unidos', flag: '🇺🇸' }, away: { name: 'Bélgica', flag: '🇧🇪' },
+    kickoffUTC: '2026-07-07T01:00:00Z', city: 'Seattle', stadium: 'Lumen Field' },
+ 
   { id: 'r16_7', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G13 R32', flag: '🔵' }, away: { name: 'G14 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-10T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Argentina', flag: '🇦🇷' }, away: { name: 'Egipto', flag: '🇪🇬' },
+    kickoffUTC: '2026-07-07T16:00:00Z', city: 'Atlanta', stadium: 'Mercedes-Benz Stadium' },
+ 
   { id: 'r16_8', group: 'R16', phase: 'round16', knockout: true,
-    home: { name: 'G15 R32', flag: '🔵' }, away: { name: 'G16 R32', flag: '🔴' },
-    kickoffUTC: '2026-07-11T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Suiza', flag: '🇨🇭' }, away: { name: 'Colombia', flag: '🇨🇴' },
+    kickoffUTC: '2026-07-07T20:00:00Z', city: 'Vancouver', stadium: 'BC Place' },
 
   // ── CUARTOS ──────────────────────────────────────
   { id: 'qf_1', group: 'QF', phase: 'quarter', knockout: true,
