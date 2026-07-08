@@ -321,18 +321,21 @@ export const KNOCKOUT_MATCHES = [
     kickoffUTC: '2026-07-07T20:00:00Z', city: 'Vancouver', stadium: 'BC Place' },
 
   // ── CUARTOS ──────────────────────────────────────
-  { id: 'qf_1', group: 'QF', phase: 'quarter', knockout: true,
-    home: { name: 'G1 R16', flag: '🔵' }, away: { name: 'G2 R16', flag: '🔴' },
-    kickoffUTC: '2026-07-12T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+   { id: 'qf_1', group: 'QF', phase: 'quarter', knockout: true,
+    home: { name: 'Francia', flag: '🇫🇷' }, away: { name: 'Marruecos', flag: '🇲🇦' },
+    kickoffUTC: '2026-07-09T20:00:00Z', city: 'Inglewood', stadium: 'SoFi Stadium' },
+ 
   { id: 'qf_2', group: 'QF', phase: 'quarter', knockout: true,
-    home: { name: 'G3 R16', flag: '🔵' }, away: { name: 'G4 R16', flag: '🔴' },
-    kickoffUTC: '2026-07-13T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'España', flag: '🇪🇸' }, away: { name: 'Bélgica', flag: '🇧🇪' },
+    kickoffUTC: '2026-07-10T19:00:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+ 
   { id: 'qf_3', group: 'QF', phase: 'quarter', knockout: true,
-    home: { name: 'G5 R16', flag: '🔵' }, away: { name: 'G6 R16', flag: '🔴' },
-    kickoffUTC: '2026-07-13T20:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Noruega', flag: '🇳🇴' }, away: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+    kickoffUTC: '2026-07-11T21:00:00Z', city: 'Atlanta', stadium: 'Mercedes-Benz Stadium' },
+ 
   { id: 'qf_4', group: 'QF', phase: 'quarter', knockout: true,
-    home: { name: 'G7 R16', flag: '🔵' }, away: { name: 'G8 R16', flag: '🔴' },
-    kickoffUTC: '2026-07-14T00:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Argentina', flag: '🇦🇷' }, away: { name: 'Suiza', flag: '🇨🇭' },
+    kickoffUTC: '2026-07-12T01:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
 
   // ── SEMIS ─────────────────────────────────────────
   { id: 'sf_1', group: 'SF', phase: 'semi', knockout: true,
