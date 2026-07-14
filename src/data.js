@@ -338,12 +338,13 @@ export const KNOCKOUT_MATCHES = [
     kickoffUTC: '2026-07-12T01:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
 
   // ── SEMIS ─────────────────────────────────────────
-  { id: 'sf_1', group: 'SF', phase: 'semi', knockout: true,
-    home: { name: 'G1 QF', flag: '🔵' }, away: { name: 'G2 QF', flag: '🔴' },
-    kickoffUTC: '2026-07-15T23:00:00Z', city: 'TBD', stadium: 'TBD' },
+    { id: 'sf_1', group: 'SF', phase: 'semi', knockout: true,
+    home: { name: 'Francia', flag: '🇫🇷' }, away: { name: 'España', flag: '🇪🇸' },
+    kickoffUTC: '2026-07-14T19:00:00Z', city: 'Arlington', stadium: 'AT&T Stadium' },
+ 
   { id: 'sf_2', group: 'SF', phase: 'semi', knockout: true,
-    home: { name: 'G3 QF', flag: '🔵' }, away: { name: 'G4 QF', flag: '🔴' },
-    kickoffUTC: '2026-07-16T23:00:00Z', city: 'TBD', stadium: 'TBD' },
+    home: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, away: { name: 'Argentina', flag: '🇦🇷' },
+    kickoffUTC: '2026-07-15T19:00:00Z', city: 'Atlanta', stadium: 'Mercedes-Benz Stadium' },
 
   // ── TERCER LUGAR ──────────────────────────────────
   { id: 'tp_1', group: '3P', phase: 'third', knockout: true,
