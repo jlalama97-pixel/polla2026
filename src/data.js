@@ -346,15 +346,14 @@ export const KNOCKOUT_MATCHES = [
     home: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, away: { name: 'Argentina', flag: '🇦🇷' },
     kickoffUTC: '2026-07-15T19:00:00Z', city: 'Atlanta', stadium: 'Mercedes-Benz Stadium' },
 
-  // ── TERCER LUGAR ──────────────────────────────────
-  { id: 'tp_1', group: '3P', phase: 'third', knockout: true,
-    home: { name: 'Perdedor SF-1', flag: '🔵' }, away: { name: 'Perdedor SF-2', flag: '🔴' },
-    kickoffUTC: '2026-07-19T19:00:00Z', city: 'TBD', stadium: 'TBD' },
-
+  // ── TERCER PUESTO ────────────────────────────────
+{ id: 'tp_1', group: '3P', phase: 'third', knockout: true,
+  home: { name: 'Francia', flag: '🇫🇷' }, away: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+  kickoffUTC: '2026-07-18T21:00:00Z', city: 'TBD', stadium: 'TBD' },
   // ── FINAL ─────────────────────────────────────────
-  { id: 'final', group: 'FINAL', phase: 'final', knockout: true,
-    home: { name: 'Ganador SF-1', flag: '🏆' }, away: { name: 'Ganador SF-2', flag: '🏆' },
-    kickoffUTC: '2026-07-19T23:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
+{ id: 'final', group: 'FINAL', phase: 'final', knockout: true,
+  home: { name: 'España', flag: '🇪🇸' }, away: { name: 'Argentina', flag: '🇦🇷' },
+  kickoffUTC: '2026-07-19T19:00:00Z', city: 'East Rutherford', stadium: 'MetLife Stadium' },
 ]
 
 export const ALL_MATCHES = [...genGroupMatches(), ...KNOCKOUT_MATCHES]
